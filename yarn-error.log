@@ -1,0 +1,64 @@
+Arguments: 
+  /home/slavik/.nvm/versions/node/v20.0.0/bin/node /snap/node/7392/bin/yarn.js global dir
+
+PATH: 
+  /home/slavik/Стільниця/React-Native/react-native-hw2/node_modules/.bin:/home/slavik/Стільниця/React-Native/node_modules/.bin:/home/slavik/Стільниця/node_modules/.bin:/home/slavik/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/home/slavik/.nvm/versions/node/v20.0.0/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/home/slavik/.nvm/versions/node/v20.0.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  20.0.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: EACCES: permission denied, write
+      at writeSync (node:fs:939:3)
+      at SyncWriteStream._write (node:internal/fs/sync_write_stream:26:3)
+      at writeOrBuffer (node:internal/streams/writable:399:12)
+      at _write (node:internal/streams/writable:340:10)
+      at Writable.write (node:internal/streams/writable:344:10)
+      at ConsoleReporter._log (/snap/node/7392/lib/cli.js:92833:17)
+      at ConsoleReporter.log (/snap/node/7392/lib/cli.js:92821:10)
+      at dir (/snap/node/7392/lib/cli.js:36307:14)
+      at Object.<anonymous> (/snap/node/7392/lib/cli.js:25987:25)
+      at Generator.next (<anonymous>)
+
+npm manifest: 
+  {
+    "name": "mynewproject",
+    "version": "1.0.0",
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "tel": "expo start --tunnel"
+    },
+    "dependencies": {
+      "@expo/vector-icons": "^13.0.0",
+      "@expo/webpack-config": "^18.0.1",
+      "expo": "~48.0.11",
+      "expo-image-picker": "~14.1.1",
+      "expo-status-bar": "~1.4.4",
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "react-native": "0.71.6",
+      "react-native-web": "~0.18.10",
+      "styled-components": "^5.3.10",
+      "expo-font": "~11.1.1"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.20.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
