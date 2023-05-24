@@ -42,19 +42,9 @@ export default function LoginScreen({ selectScreen, fontConfig }) {
     setFormState(defaultFromState);
     Keyboard.dismiss();
   };
+
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <ImageBackground
-            source={require("../../images/PhotoBG.png")}
-            resizeMode="cover"
-            style={styles.image}
-          >
-            <View style={styles.formWrap}>
+    <View style={styles.formWrap}>
               <Text style={styles.formTitle}>Войти</Text>
 
               <View
@@ -119,10 +109,91 @@ export default function LoginScreen({ selectScreen, fontConfig }) {
                 </>
               )}
             </View>
-          </ImageBackground>
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+
+
+
+
+
+    // <KeyboardAvoidingView
+    //   behavior={Platform.OS === "ios" ? "padding" : "height"}
+    //   style={styles.container}
+    // >
+    //   <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    //     <View style={styles.container}>
+    //       <ImageBackground
+    //         source={require("../../images/PhotoBG.png")}
+    //         resizeMode="cover"
+    //         style={styles.image}
+    //       >
+    //         <View style={styles.formWrap}>
+    //           <Text style={styles.formTitle}>Войти</Text>
+
+    //           <View
+    //             style={styles.formInputWrap}
+    //             onFocus={() => setIsKeyboardOpen(true)}
+    //           >
+    //             <TextInput
+    //               style={styles.input}
+    //               placeholderTextColor={"#BDBDBD"}
+    //               placeholder="Адрес электронной почты"
+    //               value={formState.email}
+    //               keyboardType={"email-address"}
+    //               onChangeText={(value) =>
+    //                 setFormState((prevState) => ({
+    //                   ...prevState,
+    //                   email: value,
+    //                 }))
+    //               }
+    //             />
+    //             <View style={styles.passwordContainer}>
+    //               <TextInput
+    //                 style={[styles.input, styles.passwordInput]}
+    //                 placeholder="Пароль"
+    //                 placeholderTextColor={"#BDBDBD"}
+    //                 value={formState.password}
+    //                 maxLength={12}
+    //                 secureTextEntry={isPasswordWisible}
+    //                 onChangeText={(value) =>
+    //                   setFormState((prevState) => ({
+    //                     ...prevState,
+    //                     password: value,
+    //                   }))
+    //                 }
+    //               />
+    //               <Feather
+    //                 name={isPasswordWisible ? "eye-off" : "eye"}
+    //                 style={styles.passwordIcon}
+    //                 size={24}
+    //                 color="#999"
+    //                 onPress={() =>
+    //                   setIsPasswordWisible((prevState) => !prevState)
+    //                 }
+    //               />
+    //             </View>
+    //           </View>
+    //           {!isKeyboardOpen && (
+    //             <>
+    //               <TouchableOpacity style={styles.btn} onPress={onSubmit}>
+    //                 <Text style={{ color: "#fff" }}>Войти</Text>
+    //               </TouchableOpacity>
+    //               <Text style={{ fontFamily: "Roboto-Regular" }}>
+    //                 Нет аккаунта?
+    //                 <Text
+    //                   onPress={() => {
+    //                     selectScreen((state) => !state);
+    //                   }}
+    //                   style={{ fontFamily: "Roboto-Regular" }}
+    //                 >
+    //                   Зарегистрироваться
+    //                 </Text>
+    //               </Text>
+    //             </>
+    //           )}
+    //         </View>
+    //       </ImageBackground>
+    //     </View>
+    //   </TouchableWithoutFeedback>
+    // </KeyboardAvoidingView>
   );
 }
 const styles = StyleSheet.create({

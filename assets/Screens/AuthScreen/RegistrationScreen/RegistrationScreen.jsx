@@ -58,18 +58,8 @@ export default function RegistrationScreen({ selectScreen, fontConfig }) {
     setFormState(defaultFromState);
     Keyboard.dismiss();
   };
+
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          <ImageBackground
-            source={require("../../images/PhotoBG.png")}
-            resizeMode="cover"
-            style={styles.image}
-          >
             <View style={styles.formWrap}>
               <View style={styles.profilePhotoWrap}>
                 {image && (
@@ -171,10 +161,123 @@ export default function RegistrationScreen({ selectScreen, fontConfig }) {
                 </>
               )}
             </View>
-          </ImageBackground>
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+
+    // <KeyboardAvoidingView
+    //   behavior={Platform.OS === "ios" ? "padding" : "height"}
+    //   style={styles.container}
+    // >
+    //   <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    //     <View style={styles.container}>
+    //       <ImageBackground
+    //         source={require("../../images/PhotoBG.png")}
+    //         resizeMode="cover"
+    //         style={styles.image}
+    //       >
+    //         <View style={styles.formWrap}>
+    //           <View style={styles.profilePhotoWrap}>
+    //             {image && (
+    //               <Image style={styles.profilePhoto} source={{ uri: image }} />
+    //             )}
+    //             <TouchableOpacity style={styles.button}>
+    //               {image ? (
+    //                 <AntDesign
+    //                   name="closecircleo"
+    //                   size={24}
+    //                   color="black"
+    //                   onPress={() => setImage(null)}
+    //                 />
+    //               ) : (
+    //                 <AntDesign
+    //                   name="pluscircleo"
+    //                   size={24}
+    //                   color="black"
+    //                   onPress={pickImage}
+    //                 />
+    //               )}
+    //             </TouchableOpacity>
+    //           </View>
+    //           <Text style={styles.formTitle}>Регистрация</Text>
+    //           <View
+    //             style={styles.formInputWrap}
+    //             onFocus={() => setIsKeyboardOpen(true)}
+    //           >
+    //             <TextInput
+    //               style={styles.input}
+    //               placeholderTextColor={"#BDBDBD"}
+    //               placeholder="Логин"
+    //               value={formState.login}
+    //               maxLength={16}
+    //               onChangeText={(value) =>
+    //                 setFormState((prevState) => ({
+    //                   ...prevState,
+    //                   login: value,
+    //                 }))
+    //               }
+    //             />
+    //             <TextInput
+    //               style={styles.input}
+    //               placeholderTextColor={"#BDBDBD"}
+    //               placeholder="Адрес электронной почты"
+    //               value={formState.email}
+    //               keyboardType={"email-address"}
+    //               onChangeText={(value) =>
+    //                 setFormState((prevState) => ({
+    //                   ...prevState,
+    //                   email: value,
+    //                 }))
+    //               }
+    //             />
+    //             <View style={styles.passwordContainer}>
+    //               <TextInput
+    //                 style={[styles.input, styles.passwordInput]}
+    //                 placeholder="Пароль"
+    //                 placeholderTextColor={"#BDBDBD"}
+    //                 value={formState.password}
+    //                 maxLength={12}
+    //                 secureTextEntry={isPasswordWisible}
+    //                 onChangeText={(value) =>
+    //                   setFormState((prevState) => ({
+    //                     ...prevState,
+    //                     password: value,
+    //                   }))
+    //                 }
+    //               />
+    //               <Feather
+    //                 name={isPasswordWisible ? "eye-off" : "eye"}
+    //                 style={styles.passwordIcon}
+    //                 size={24}
+    //                 color="#999"
+    //                 onPress={() =>
+    //                   setIsPasswordWisible((prevState) => !prevState)
+    //                 }
+    //               />
+    //             </View>
+    //           </View>
+    //           {!isKeyboardOpen && (
+    //             <>
+    //               <TouchableOpacity style={styles.btn} onPress={onSubmit}>
+    //                 <Text style={{ color: "#fff", fontFamily: "Roboto-Bold" }}>
+    //                   Зарегистрироваться
+    //                 </Text>
+    //               </TouchableOpacity>
+    //               <Text style={{ fontFamily: "Roboto-Regular" }}>
+    //                 Уже есть аккаунт?
+    //                 <Text
+    //                   onPress={() => {
+    //                     selectScreen((state) => !state);
+    //                   }}
+    //                   style={{ fontFamily: "Roboto-Regular" }}
+    //                 >
+    //                   Войти
+    //                 </Text>
+    //               </Text>
+    //             </>
+    //           )}
+    //         </View>
+    //       </ImageBackground>
+    //     </View>
+    //   </TouchableWithoutFeedback>
+    // </KeyboardAvoidingView>
   );
 }
 const styles = StyleSheet.create({
