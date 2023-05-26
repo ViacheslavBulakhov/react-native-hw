@@ -1,11 +1,19 @@
-import { useState} from "react";
-import LoginScreen from "./assets/Screens/LoginScreen/LoginScreen";
-import RegistrationScreen from "./assets/Screens/RegistrationScreen/RegistrationScreen";
+import 'react-native-gesture-handler';
+
 import { useFonts } from "expo-font";
-import AuthWrap from "./assets/Screens/AuthComponent/AuthWrap/AuthWrap";
+
+import { NavigationContainer } from "@react-navigation/native";
+
+import { useState} from "react";
+
+import PrivateRouting from "./assets/Utils/PrivateRouting";
+import MapScreen from './assets/Screens/MapScreen';
+
+
+
 
 export default function App() {
-  const [isRegistered, setIsRegistered] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [fontsLoaded] = useFonts({
     "Roboto-Regular": require("./assets/fonts/Roboto/Roboto-Regular.ttf"),
@@ -18,12 +26,10 @@ export default function App() {
   }
 
   return (
-    <AuthWrap>
-            {isRegistered ? (
-         <LoginScreen selectScreen={setIsRegistered} />
-       ) : (
-         <RegistrationScreen selectScreen={setIsRegistered} />
-       )}
-    </AuthWrap>
+  <NavigationContainer>
+    <PrivateRouting isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+  </NavigationContainer>
+
   );
 }
+   

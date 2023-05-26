@@ -18,7 +18,7 @@ const defaultFromState = {
   password: "",
 };
 
-export default function LoginScreen({ selectScreen, fontConfig }) {
+export default function LoginScreen({  navigation,setIsLoggedIn }) {
   const [formState, setFormState] = useState(defaultFromState);
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
   const [isPasswordWisible, setIsPasswordWisible] = useState(true);
@@ -39,6 +39,7 @@ export default function LoginScreen({ selectScreen, fontConfig }) {
 
   const onSubmit = () => {
     console.log("Дані з форми", formState);
+    setIsLoggedIn(prevState=>!prevState)
     setFormState(defaultFromState);
     Keyboard.dismiss();
   };
@@ -50,7 +51,7 @@ export default function LoginScreen({ selectScreen, fontConfig }) {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
           <ImageBackground
-            source={require("../../images/PhotoBG.png")}
+            source={require("../../../images/PhotoBG.png")}
             resizeMode="cover"
             style={styles.image}
           >
@@ -108,9 +109,7 @@ export default function LoginScreen({ selectScreen, fontConfig }) {
                   <Text style={{ fontFamily: "Roboto-Regular" }}>
                     Нет аккаунта?
                     <Text
-                      onPress={() => {
-                        selectScreen((state) => !state);
-                      }}
+                      onPress={()=>navigation.navigate('Registration')}
                       style={{ fontFamily: "Roboto-Regular" }}
                     >
                       Зарегистрироваться
@@ -123,6 +122,7 @@ export default function LoginScreen({ selectScreen, fontConfig }) {
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
+
   );
 }
 const styles = StyleSheet.create({

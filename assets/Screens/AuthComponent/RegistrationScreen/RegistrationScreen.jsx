@@ -4,12 +4,17 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   Keyboard,
   Image,
+  KeyboardAvoidingView,
+  ImageBackground
 } from "react-native";
+
 import { Feather, AntDesign } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
 import { useState, useEffect } from "react";
+
 
 const defaultFromState = {
   login: "",
@@ -17,7 +22,7 @@ const defaultFromState = {
   password: "",
 };
 
-export default function RegistrationScreen({ selectScreen, fontConfig }) {
+export default function RegistrationScreen({ navigation, setIsLoggedIn}) {
   const [formState, setFormState] = useState(defaultFromState);
   const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
   const [isPasswordWisible, setIsPasswordWisible] = useState(true);
@@ -52,12 +57,25 @@ export default function RegistrationScreen({ selectScreen, fontConfig }) {
 
   const onSubmit = () => {
     console.log("Дані з форми", formState);
+    setIsLoggedIn(prevState=>!prevState)
     setFormState(defaultFromState);
     Keyboard.dismiss();
   };
 
   return (
-            <View style={styles.formWrap}>
+
+    <KeyboardAvoidingView
+    behavior={Platform.OS === "ios" ? "padding" : "height"}
+    style={styles.container}
+  >
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <ImageBackground
+          source={require("../../../images/PhotoBG.png")}
+          resizeMode="cover"
+          style={styles.image}
+        >
+                      <View style={styles.formWrap}>
               <View style={styles.profilePhotoWrap}>
                 {image && (
                   <Image style={styles.profilePhoto} source={{ uri: image }} />
@@ -147,9 +165,7 @@ export default function RegistrationScreen({ selectScreen, fontConfig }) {
                   <Text style={{ fontFamily: "Roboto-Regular" }}>
                     Уже есть аккаунт?
                     <Text
-                      onPress={() => {
-                        selectScreen((state) => !state);
-                      }}
+                      onPress={()=> navigation.navigate('Login')}
                       style={{ fontFamily: "Roboto-Regular" }}
                     >
                       Войти
@@ -158,6 +174,11 @@ export default function RegistrationScreen({ selectScreen, fontConfig }) {
                 </>
               )}
             </View>
+        </ImageBackground>
+      </View>
+    </TouchableWithoutFeedback>
+  </KeyboardAvoidingView>
+
   );
 }
 const styles = StyleSheet.create({
