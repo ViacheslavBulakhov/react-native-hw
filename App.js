@@ -1,16 +1,12 @@
-import 'react-native-gesture-handler';
+import "react-native-gesture-handler";
 
 import { useFonts } from "expo-font";
 
 import { NavigationContainer } from "@react-navigation/native";
 
-import { useState} from "react";
+import { useState } from "react";
 
 import PrivateRouting from "./assets/Utils/PrivateRouting";
-import MapScreen from './assets/Screens/MapScreen';
-
-
-
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,10 +22,8 @@ export default function App() {
   }
 
   return (
-  <NavigationContainer>
-    <PrivateRouting isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
-  </NavigationContainer>
-
+    <NavigationContainer>
+      <PrivateRouting isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+    </NavigationContainer>
   );
 }
-   
